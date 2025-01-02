@@ -1,3 +1,5 @@
+# grayscale + RGB Color + contrast + enhancement + brightness enhancement + cropping
+
 from google.colab import files
 import matplotlib.pyplot as plt
 import cv2
