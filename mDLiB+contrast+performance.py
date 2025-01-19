@@ -90,13 +90,26 @@ try:
         print(f"Detection time: {elapsed_time:.4f} seconds")
         print(f"Number of landmarks detected: {len(detected_landmarks)}")
 
-        # Example ground truth landmarks (for performance evaluation)
+        # Example ground truth landmarks (subset of 5 points from 68 landmarks)
         ground_truth_landmarks = np.array([
-            [150, 200], [180, 210], [160, 240], [140, 280], [190, 290]
+            detected_landmarks[36],  # Left eye (approximation)
+            detected_landmarks[45],  # Right eye
+            detected_landmarks[30],  # Nose tip
+            detected_landmarks[48],  # Left corner of mouth
+            detected_landmarks[54]   # Right corner of mouth
         ])
 
         # Step 4: Calculate performance metrics
-        nme = calculate_nme(detected_landmarks, ground_truth_landmarks)
+        nme = calculate_nme(
+            np.array([
+                detected_landmarks[36],
+                detected_landmarks[45],
+                detected_landmarks[30],
+                detected_landmarks[48],
+                detected_landmarks[54]
+            ]),
+            ground_truth_landmarks
+        )
         print(f"Normalized Mean Error (NME): {nme:.4f}")
 
         # Step 5: Enhance contrast of the image
